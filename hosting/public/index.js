@@ -55,14 +55,14 @@ firebase.auth().onAuthStateChanged(function(user) {
       });
 
       $("#cardContainer").append(
-        "<div class='card mb-3'><img id='"+ id + "image" +"' class='card-img-top' alt='...'><div class='card-body'><h5 class='card-title'>" + title + "</h5>"
+        "<div class='col-sm-6'><div class='card mb-3'><img id='"+ id + "image" +"' class='card-img-top' alt='...'><div class='card-body'><h5 class='card-title'>" + title + "</h5>"
       +"<h6 class='card-subtitle mb-2 text-muted'>" + template + "</h6>"
       +"<p class='card-text'>" + description+ "</p>"
       +"</div><ul class='list-group list-group-flush'>"+
                   "<li class='list-group-item'><a href="+ "kegaki/index.html?id=" + id +" class='card-link'>Open in Kegaki</a></li>"+
                   "<li class='list-group-item'><a href="+ "yattoko/index.html?id=" + id +" class='card-link'>Open in Yattoko</a></li>"+
                   "<li class='list-group-item'><a href="+ "shikkui/index.html?id=" + id +" class='card-link'>Open in Shikkui</a></li>"+
-                "</ul></div>");
+                "</ul></div></div>");
     });
     
   }
