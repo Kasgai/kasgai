@@ -17,40 +17,32 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav mr-auto">
-            <span class="navbar-text" id="greeting"></span>
-          </div>
-          <div class="navbar-nav">       
-            <a class="nav-item nav-link" href="logout.html">ログアウト</a>
-          </div>
-        </div>
       </div>
     </nav>
    
     <div class="container mt-5 mb-5">
         <div class="card">
-            <h5 class="card-header">新規プロジェクト</h5>
+            <h5 class="card-header">ログイン</h5>
             <div class="card-body">
-              <p class="card-text">プロジェクトを作成するために必要な項目に記入してください</p>
+              <p class="card-text">既に登録済みの場合はログインしてください。未登録の場合はサインアップしましょう。</p>
               <form>
                   <div class="form-group">
-                    <label for="inputTitle">タイトル</label>
-                    <input type="text" class="form-control" id="inputTitle" placeholder="プロジェクトの題名">
+                    <label for="inputEmail">E-mail</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="username@example.com">
                   </div>
                   <div class="form-group">
-                      <label for="inputDescription">説明</label>
-                      <input type="text" class="form-control" id="inputDescription" placeholder="一言でプロジェクトを説明してください">
+                      <label for="inputPassword">Password</label>
+                      <input type="password" class="form-control" id="inputPassword" placeholder="password">
                   </div>
-                  <div class="form-group">
-                      <label for="inputTemplate">テンプレート</label>
-                      <select class="form-control" id="inputTemplate">
-                        <option value="1">図形の分類</option>
-                      </select>
-                    </div>
-                  <button type="button" class="btn btn-primary float-right" id="createButton">作成</button>
+                  
+                  <button type="button" class="btn btn-primary float-right" id="loginButton">ログイン</button>
+                  <button type="button" class="btn btn-outline-secondary float-right mr-3" id="signupButton">サインアップ</button>
                 </form>
             </div>
+          </div>
+
+          <div class="alert alert-danger mt-5 fade" id="problemAlert" role="alert">
+              A simple danger alert—check it out!
           </div>
        
 
@@ -65,9 +57,11 @@
       </nav>
 
     <!-- Optional JavaScript -->
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
     <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+
     <script>
       // Initialize Firebase
       var config = {
@@ -81,10 +75,9 @@
       firebase.initializeApp(config);
     </script>
 
-    <script src="newproject.js"></script>
+    <script src="login.js"></script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   </body>

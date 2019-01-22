@@ -19,10 +19,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav mr-auto">
-            <span class="navbar-text" href="#">Hi, Yuji Sasaki</span>
+            <span class="navbar-text" id="greeting" href="#"></span>
           </div>
           <div class="navbar-nav">       
-            <a class="nav-item nav-link" href="#">ログアウト</a>
+            <a class="nav-item nav-link" href="logout.html">ログアウト</a>
           </div>
         </div>
       </div>
@@ -34,52 +34,9 @@
             <small class="text-muted ml-3">参加中のプロジェクト</small>
             <a role="button" class="btn btn-outline-success float-right" href="newproject.html">新規プロジェクト</a>
         </h3>
-        <div class="row mt-5">
+        <div class="row mt-5" id="cardContainer">
 
-            <div class="col-sm-6">
-              <div class="card mb-3">
-                  <img src="https://imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-140mmf_35-56g_ed_vr/img/sample/sample1_l.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">project title</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#" class="card-link">Open in Kegaki</a></li>
-                    <li class="list-group-item"><a href="#" class="card-link">Open in Yattoko</a></li>
-                    <li class="list-group-item"><a href="#" class="card-link">Open in Shikkui</a></li>
-                  </ul>
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-                <div class="card mb-3">
-                    <img src="https://www.instagram.com/p/BgYuBnfFXPQ/media/?size=l" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">project title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><a href="#" class="card-link">Open in Kegaki</a></li>
-                      <li class="list-group-item"><a href="#" class="card-link">Open in Yattoko</a></li>
-                      <li class="list-group-item"><a href="#" class="card-link">Open in Shikkui</a></li>
-                    </ul>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                  <div class="card mb-3">
-                      <img src="https://imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-140mmf_35-56g_ed_vr/img/sample/sample1_l.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">project title</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a href="#" class="card-link">Open in Kegaki</a></li>
-                        <li class="list-group-item"><a href="#" class="card-link">Open in Yattoko</a></li>
-                        <li class="list-group-item"><a href="#" class="card-link">Open in Shikkui</a></li>
-                      </ul>
-                  </div>
-                </div>
+            
             
           </div>
     </div>
@@ -94,8 +51,26 @@
 
     <!-- Optional JavaScript -->
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDozEEmAxyqJU3avAdW_KBommb4HGR5nRk",
+        authDomain: "kasgai.firebaseapp.com",
+        databaseURL: "https://kasgai.firebaseio.com",
+        projectId: "kasgai",
+        storageBucket: "kasgai.appspot.com",
+        messagingSenderId: "143262592214"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script src="index.js"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   </body>
