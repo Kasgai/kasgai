@@ -11,9 +11,12 @@
     <title>Kasgai</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f7f7f7">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Kasgai</a>
+        
+        <a class="navbar-brand" href="index.html">
+            <img src="icon.jpeg" width="30" height="30" alt="">
+          Kasgai</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,12 +37,57 @@
             <small class="text-muted ml-3">参加中のプロジェクト</small>
             <a role="button" class="btn btn-outline-success float-right" href="newproject.html">新規プロジェクト</a>
         </h3>
+
+        <div class="d-flex justify-content-center" id="loading">
+          <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+
+        <div class="card text-center collapse mt-5" id="noprojectCard">
+          <div class="card-body">
+                <h5 class="card-title">プロジェクトがありません</h5>
+              <p class="card-text">表示するデータが見つかりませんでした　新しくプロジェクトを作りましょう</p>
+            </blockquote>
+          </div>
+        </div>
+
         <div class="row mt-5" id="cardContainer">
 
             
             
-          </div>
+        </div>
     </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="settingModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h5>詳細</h5>
+            <p id="modalDescription"></p>
+            <hr>
+            <h5>共有中のアカウント</h5>
+            <p id="modalDescription">共有機能は準備中です。しばらくお待ちください。</p>
+            <hr>
+            <h5>削除</h5>
+            <p>削除を押すと二度と復元できないので注意してください。</p>
+            <button type="button" class="btn btn-danger" id="modalDeleteButton">削除</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Modal-->
 
     <nav class="navbar sticky-bottom navbar-dark bg-dark">
         <div class="container">
