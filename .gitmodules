@@ -9,4 +9,4 @@
 	url = https://github.com/Kasgai/shikkui.git
 [submodule "hosting/public/kanna"]
 	path = hosting/public/kanna
-	url = https://github.com/Kasgai/kanna
+	url = https://github.com/Kasgai/kanna.git
