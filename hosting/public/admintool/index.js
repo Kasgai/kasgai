@@ -1,6 +1,8 @@
 'use strict';
 
 let nodes, network, edges;
+let shownData;
+let showingData;
 
 const ObjectKind = {
 	Target: "TARGET",
@@ -190,13 +192,7 @@ function load() {
         $("#detail").text(snapshot.val().title);
         const datetime = new Date(snapshot.val().datetime);
         $("#summary").append("<li class='list-group-item'>作成日時："+ datetime.toLocaleString("ja-JP") +"</li>");
-        showNetwork();
-
-        if(snapshot.val().code && snapshot.val().code != "{}") {
-          let data = JSON.parse(snapshot.val().code);
-          let entryPointId = nodes.get()[0].id;
-          addToNodes(data,entryPointId,EdgeType.Entry);
-        }
+        
       });
       firebase.database().ref("projects/"+getParam("id",window.location)+"/yattoko/log").once("value").then(function(snapshot) {
         let lastElapsedTime = 0;
@@ -219,11 +215,62 @@ function load() {
         $("#summary").append("<li class='list-group-item'>最初の正解までの時間："+ Math.floor(successTime / 60) +"分" +  Math.floor(successTime%60) +"秒</li>");
         $("#summary").append("<li class='list-group-item'>成功回数："+successCount+"</li>");
         $("#summary").append("<li class='list-group-item'>失敗回数："+failureCount+"</li>");
-        $("#summary").append("<li class='list-group-item'>操作回数："+count+"</li>");
-        
+		$("#summary").append("<li class='list-group-item'>操作回数："+count+"</li>");
+		shownData = count - 1;
+        lastVis()
 
       });
     }
+  }
+
+  function backVis() {
+	if(showingData > 0 && getCodeOnIndex(showingData) == getCodeOnIndex(showingData - 1)) {
+		showingData -= 1;
+		backVis();
+	}
+	else {
+		showVisOnIndex(showingData - 1);
+	}
+  }
+
+  function nextVis() {
+
+	if(showingData < shownData && getCodeOnIndex(showingData) == getCodeOnIndex(showingData + 1)) {
+		showingData += 1;
+		nextVis();
+	}
+	else {
+		showVisOnIndex(showingData + 1);
+	}
+  }
+
+  function firstVis() {
+	showVisOnIndex(0);
+  }
+
+  function lastVis() {
+	showVisOnIndex(shownData);
+  }
+
+  function getCodeOnIndex(index) {
+	return $($($("#log").children()[index]).children()[1]).text()
+  }
+
+  function showVisOnIndex(index){
+	if(index >= 0 && index <= shownData) {
+		showNetworkWithDict(getCodeOnIndex(index));
+			showingData = index;
+			$("#shownDataIndex").text(index + " / " + shownData);
+	}
+  }
+
+  function showNetworkWithDict(dict) {
+	showNetwork();
+	if(dict && dict != "{}") {
+	  let data = JSON.parse(dict);
+	  let entryPointId = nodes.get()[0].id;
+	  addToNodes(data,entryPointId,EdgeType.Entry);
+	}
   }
 
   function showNetwork() {
@@ -243,7 +290,7 @@ function load() {
     };
     let options = {
       autoResize: true,
-      height: '400px',
+      height: '500px',
       width: '100%',
       layout:{
         hierarchical: {
