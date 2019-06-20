@@ -56,14 +56,26 @@ function load() {
       });
       firebase.database().ref("projects/"+getParam("id",window.location)+"/yattoko/log").once("value").then(function(snapshot) {
         let lastElapsedTime = 0;
+        let successTime;
+        let successCount = 0;
+        let failureCount = 0;
+        let count = 0;
         snapshot.forEach(function(childSnapshot) {
+          count++;
           const time = new Date(childSnapshot.val().datetime);
           let elapsedTime = childSnapshot.val().time;
           if(elapsedTime < lastElapsedTime) elapsedTime += lastElapsedTime;
           lastElapsedTime = elapsedTime;
           let colorlingClass =  "class='"+ (childSnapshot.val().isValidate ? (childSnapshot.val().hantei ? "table-success" : "table-danger") : "") +"'";
+          if(childSnapshot.val().isValidate == true && childSnapshot.val().hantei == true && !successTime) successTime = lastElapsedTime;
+          if(childSnapshot.val().isValidate == true && childSnapshot.val().hantei == true) successCount++;
+          if(childSnapshot.val().isValidate == true && childSnapshot.val().hantei == false) failureCount++;
           $("#log").append("<tr "+ colorlingClass +"><td>"+time.getHours() + ":" + time.getMinutes() +"</td><td>"+childSnapshot.val().code+"</td><td>"+Math.floor(elapsedTime / 60) + "分" + Math.floor(elapsedTime % 60)+"秒</td></tr>");
         })
+        $("#summary").append("<li class='list-group-item'>最初の正解までの時間："+ Math.floor(successTime / 60) +"分" +  Math.floor(successTime%60) +"秒</li>");
+        $("#summary").append("<li class='list-group-item'>成功回数："+successCount+"</li>");
+        $("#summary").append("<li class='list-group-item'>失敗回数："+failureCount+"</li>");
+        $("#summary").append("<li class='list-group-item'>操作回数："+count+"</li>");
       });
     }
   }
