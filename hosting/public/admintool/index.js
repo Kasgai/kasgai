@@ -283,7 +283,7 @@ function showVisOnIndex(index) {
 		showNetworkWithDict(getCodeOnIndex(index));
 		showingData = index;
 		$("#shownDataIndex").text(index + " / " + shownData);
-		$("#visualizeSummary").empty().append($("#log").children()[index]);
+		$("#visualizeSummary").empty().append($($("#log").children()[index]).clone(true, false));
 	}
 }
 
