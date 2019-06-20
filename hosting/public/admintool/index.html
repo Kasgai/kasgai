@@ -28,8 +28,8 @@
 		};
 		firebase.initializeApp(config);
 	</script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css" />
 	<script src="index.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
 		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
@@ -71,16 +71,20 @@
 		<h5 class="mt-3 mb-3">ビジュアライズ</h5>
 		<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 			<div class="btn-group ml-auto" role="group" aria-label="First group">
-			  <button type="button" class="btn btn-secondary" onclick="firstVis();">First</button>
-			  <button type="button" class="btn btn-secondary" onclick="backVis();">Back</button>
+				<button type="button" class="btn btn-secondary" onclick="firstVis();">First</button>
+				<button type="button" class="btn btn-secondary" onclick="backVis();">Back</button>
 			</div>
 			<p id="shownDataIndex" class="mr-3 ml-3">100 / 3</p>
 			<div class="btn-group mr-auto" role="group" aria-label="Second group">
-			  <button type="button" class="btn btn-secondary" onclick="nextVis();">Next</button>
-			  <button type="button" class="btn btn-secondary" onclick="lastVis();">Last</button>
+				<button type="button" class="btn btn-secondary" onclick="nextVis();">Next</button>
+				<button type="button" class="btn btn-secondary" onclick="lastVis();">Last</button>
 			</div>
-		  </div>
-		<div id="network"></div>
+		</div>
+		<div class="mt-3 mb-3" id="network"></div>
+		<table class="table table-striped">
+			<tbody id="visualizeSummary">
+			</tbody>
+		</table>
 		<h5 class="mt-3 mb-3">ログ</h5>
 		<table class="table table-striped">
 			<thead>
