@@ -14,6 +14,13 @@ firebase.auth().onAuthStateChanged(function(user) {
         .then(function(snapshot) {
             $("#greeting").text("Hi, " + snapshot.child("firstName").val());
         });
+
+        firebase.database().ref("store/").once("value").then(function(snapshot) {
+          snapshot.forEach(element => {
+            console.log(element);
+            $("#inputTemplate").append("<option value='"+element.key+"'>"+element.child("title").val()+"</option>");
+          });
+        });
       
     } else {
       // User is signed out.
