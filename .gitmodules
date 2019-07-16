@@ -4,9 +4,6 @@
 [submodule "hosting/public/yattoko"]
 	path = hosting/public/yattoko
 	url = https://github.com/Kasgai/yattoko.git
-[submodule "hosting/public/shikkui"]
-	path = hosting/public/shikkui
-	url = https://github.com/Kasgai/shikkui.git
 [submodule "hosting/public/kanna"]
 	path = hosting/public/kanna
 	url = https://github.com/Kasgai/kanna.git
