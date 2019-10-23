@@ -9,6 +9,21 @@ firebase.auth().onAuthStateChanged(function (user) {
 	}
 });
 
+window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+
 function getParam(name, url) {
 	if (!url) url = window.location.href;
 	name = name.replace(/[\[\]]/g, "\\$&");
@@ -57,8 +72,13 @@ function showSurvey() {
 	questions.forEach(element => {
 		$("#questionsform").append(element.getHTML());
 	});
-	$("#questionsform").append('<button class="btn btn-primary mt-5 mb-5 btn-lg btn-block" type="submit">回答を送信</button>');
+	$("#questionsform").append('<button class="btn btn-primary mt-5 mb-5 btn-lg btn-block">回答を送信</button>');
 	
+}
+
+function save(e) {
+	e.stopPropagation();
+	console.log($("#questionsform"))
 }
 
 class Section {
@@ -66,7 +86,8 @@ class Section {
 	constructor(csv) {
 		let data = csv.split(",");
 		if(data[0] != "section"){throw new Error(csv+"\nこれはSectionではありません");}
-		this.title = data[1];
+		this.id = data[1];
+		this.title = data[2];
 	}
 	
 	getHTML() {
@@ -79,14 +100,15 @@ class Text {
 	constructor(csv) {
 		let data = csv.split(",");
 		if(data[0] != "text"){throw new Error(csv+"\nこれはTextではありません");}
-		this.question = data[1];
-		this.isRequired = data[2] == 1;
+		this.id = data[1];
+		this.question = data[2];
+		this.isRequired = data[3] == 1;
 	}
 	
 	getHTML() {
 		return '<div class="form-group">'+
 		'<label>'+this.question+(this.isRequired ? "" : '<span class="badge badge-secondary ml-2">Optional</span>')+'</label>'+
-		'<input class="form-control" type="text" placeholder="記述解答">'+
+		'<input class="form-control" name="'+this.id+'" type="text" placeholder="記述解答" '+(this.isRequired ? "required" : "")+ '>'+
 	'</div>';
 	}
 }
@@ -96,14 +118,15 @@ class LongText {
 	constructor(csv) {
 		let data = csv.split(",");
 		if(data[0] != "longtext"){throw new Error(csv+"\nこれはLongTextではありません");}
-		this.question = data[1];
-		this.isRequired = data[2] == 1;
+		this.id = data[1];
+		this.question = data[2];
+		this.isRequired = data[3] == 1;
 	}
 	
 	getHTML() {
 		return '<div class="form-group">'+
 		'<label>'+this.question+(this.isRequired ? "" : '<span class="badge badge-secondary ml-2">Optional</span>')+'</label>'+
-		'<textarea class="form-control"rows="3" placeholder="自由記述"></textarea></div>';
+		'<textarea class="form-control"rows="3" name="'+this.id+'" placeholder="自由記述" '+(this.isRequired ? "required" : "")+ '></textarea></div>';
 	}
 }
 
@@ -112,21 +135,21 @@ class Check {
 	constructor(csv) {
 		let data = csv.split(",");
 		if(data[0] != "check"){throw new Error(csv+"\nこれはCheckではありません");}
-		this.question = data[1];
-		this.isRequired = data[2] == 1;
+		this.id = data[1];
+		this.question = data[2];
+		this.isRequired = data[3] == 1;
 		this.selections = [];
-		for(let i = 3; i < data.length; i++) {
+		for(let i = 4; i < data.length; i++) {
 			this.selections.push(data[i]);
 		}
 	}
 	
 	getHTML() {
 		let returnValue = ' <div class="form-group"><label>'+this.question+(this.isRequired ? "" : '<span class="badge badge-secondary ml-2">Optional</span>')+'</label><br />';
-
-		this.selections.forEach(elem=>{
-			returnValue += '<div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="1">'+'<label class="form-check-label">'+
-			(elem.startsWith("id=") ? '<input type="text" class="form-control form-control-sm" placeholder="その他">': elem)+'</label></div>'
-		});
+		for(let i = 0; i < this.selections.length; i ++) {
+			returnValue += '<div class="form-check form-check-inline"><input class="form-check-input" name="'+this.id+'" type="checkbox" value="'+i+'" '+(this.isRequired ? "required" : "")+ '>'+'<label class="form-check-label">'+
+			(this.selections[i].startsWith("id=") ? '<input type="text" name="'+this.selections[i].substring(3)+'" class="form-control form-control-sm" placeholder="その他">': this.selections[i])+'</label></div>'
+		}
 
 		return returnValue + '</div>';
 	}
@@ -137,10 +160,11 @@ class Radio {
 	constructor(csv) {
 		let data = csv.split(",");
 		if(data[0] != "radio"){throw new Error(csv+"\nこれはradioではありません");}
-		this.question = data[1];
-		this.isRequired = data[2] == 1;
+		this.id = data[1];
+		this.question = data[2];
+		this.isRequired = data[3] == 1;
 		this.selections = [];
-		for(let i = 3; i < data.length; i++) {
+		for(let i = 4; i < data.length; i++) {
 			this.selections.push(data[i]);
 		}
 	}
@@ -148,9 +172,9 @@ class Radio {
 	getHTML() {
 		let returnValue = ' <div class="form-group"><label>'+this.question+(this.isRequired ? "" : '<span class="badge badge-secondary ml-2">Optional</span>')+'</label><br />';
 
-		this.selections.forEach(elem=>{
-			returnValue += '<div class="form-check form-check-inline"><input class="form-check-input" type="radio" value="1">'+'<label class="form-check-label">'+(elem.startsWith("id=") ? '<input type="text" class="form-control form-control-sm" placeholder="その他">': elem)+'</label></div>'
-		});
+		for(let i = 0; i < this.selections.length; i ++) {
+			returnValue += '<div class="form-check name="'+this.question+'" form-check-inline"><input class="form-check-input" name="'+this.id+'" type="radio" value="'+i+'" '+(this.isRequired ? "required" : "")+ '>'+'<label class="form-check-label">'+(this.selections[i].startsWith("id=") ? '<input type="text" class="form-control form-control-sm" name="'+this.selections[i].substring(3)+'" placeholder="その他">': this.selections[i])+'</label></div>'
+		}
 
 		return returnValue + '</div>';
 	}
