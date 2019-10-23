@@ -73,7 +73,7 @@ function showSurvey() {
 		$("#questionsform").append(element.getHTML());
 	});
 	$("#questionsform").append('<button class="btn btn-primary mt-5 mb-5 btn-lg btn-block">回答を送信</button>');
-	
+	$("#questionsform").append('<input type="hidden" name="id" value="'+getParam("id",window.location)+'">')
 }
 
 function save(e) {

@@ -30,7 +30,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css" />
-    <script src="surveyform.js" type="text/javascript"></script>
+    <script src="complete.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
         crossorigin="anonymous"></script>
@@ -59,10 +59,24 @@
     </nav>
     <div class="container">
         <h3 class="mt-5 mb-5">Survey - <span id="titleLabel"></span></h3>
-
-
-        <form id="questionsform" action="complete.html" class="needs-validation" novalidate>
-        </form>
+        <div class="card text-center collapse mt-5 mb-5" id="fin">
+            <div class="card-body">
+                <h5 class="card-title">アンケートは終了です</h5>
+                <p class="card-text">アンケートは正常に送信されました．ご協力ありがとうございました．</p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center" id="loading">
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="alert alert-danger collapse" id="error" role="alert">
+                <h4 class="alert-heading">送信失敗</h4>
+                <p>原因不明の問題により送信できませんでした．送信に失敗した内容が残っている場合は以下に表示されます．アンケート実施者にこの画面を見せてください．</p>
+                <hr>
+                <p  id="errorMessage"></p>
+              </div>
     </div>
 </body>
 
