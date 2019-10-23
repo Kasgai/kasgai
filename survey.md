@@ -30,7 +30,18 @@ text,<Question:Text>,<isRequired:Number>
 ```
 > Example
 ```
-section,What's your name?,1
+text,What's your name?,1
+```
+
+#### longtext
+A "longtext" tag shows a textarea.
+> Definition
+```
+longtext,<Question:Text>,<isRequired:Number>
+```
+> Example
+```
+longtext,Write down your idea of future.,1
 ```
 
 #### check
