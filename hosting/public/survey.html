@@ -1,88 +1,104 @@
 <!doctype html>
 <html lang="ja">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Kasgai - Survey</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f7f7f7">
-      <div class="container">
-        
-        <a class="navbar-brand" href="index.html">
-            <img src="asset/icon.jpg" width="30" height="30" alt="">
-          Kasgai</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav mr-auto">
-            <span class="navbar-text" id="greeting" href="#"></span>
-          </div>
-          <div class="navbar-nav">       
-            <a class="nav-item nav-link" href="logout.html">ログアウト</a>
-          </div>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <title>Kasgai - Survey</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f7f7f7">
+    <div class="container">
+
+      <a class="navbar-brand" href="index.html">
+        <img src="asset/icon.jpg" width="30" height="30" alt="">
+        Kasgai</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav mr-auto">
+          <span class="navbar-text" id="greeting" href="#"></span>
+        </div>
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="logout.html">ログアウト</a>
         </div>
       </div>
-    </nav>
-   
-    <div class="container mt-5">
-        <h3>
-            Surveys
-            <small class="text-muted ml-3">実施中のアンケート</small>
-        </h3>
+    </div>
+  </nav>
 
-        <div class="d-flex justify-content-center" id="loading">
-          <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
+  <div class="container mt-5">
+    <h3>
+      Surveys
+      <small class="text-muted ml-3">実施中のアンケート</small>
+    </h3>
 
-        <div class="card text-center collapse mt-5" id="noprojectCard">
-          <div class="card-body">
-                <h5 class="card-title">アンケートがありません</h5>
-              <p class="card-text">現在実施中ではありません</p>
-            </blockquote>
-          </div>
-        </div>
+    <div class="d-flex justify-content-center" id="loading">
+      <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
 
-    <nav class="navbar sticky-bottom navbar-dark bg-dark">
-        <div class="container">
-            <span class="navbar-text">
-                Copyright (c) 2018-2019 Fukui Masanori, Jo Hagikura & Yuji Sasaki All Rights Reserved.
-            </span>
-        </div>
-      </nav>
+    <div class="card text-center collapse mt-5 mb-5" id="noprojectCard">
+      <div class="card-body">
+        <h5 class="card-title">アンケートがありません</h5>
+        <p class="card-text">現在実施中ではありません</p>
+        </blockquote>
+      </div>
+    </div>
 
-    <!-- Optional JavaScript -->
+    <div class="card  mt-5 mb-5">
+      <ul class="list-group list-group-flush" id="surveylist">
+      </ul>
+    </div>
+  </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <nav class="navbar sticky-bottom navbar-dark bg-dark">
+    <div class="container">
+      <span class="navbar-text">
+        Copyright (c) 2018-2019 Fukui Masanori, Jo Hagikura & Yuji Sasaki All Rights Reserved.
+      </span>
+    </div>
+  </nav>
 
-    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+  <!-- Optional JavaScript -->
 
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDozEEmAxyqJU3avAdW_KBommb4HGR5nRk",
-        authDomain: "kasgai.firebaseapp.com",
-        databaseURL: "https://kasgai.firebaseio.com",
-        projectId: "kasgai",
-        storageBucket: "kasgai.appspot.com",
-        messagingSenderId: "143262592214"
-      };
-      firebase.initializeApp(config);
-    </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
 
-    <script src="survey.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-  </body>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDozEEmAxyqJU3avAdW_KBommb4HGR5nRk",
+      authDomain: "kasgai.firebaseapp.com",
+      databaseURL: "https://kasgai.firebaseio.com",
+      projectId: "kasgai",
+      storageBucket: "kasgai.appspot.com",
+      messagingSenderId: "143262592214"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <script src="survey.js"></script>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
