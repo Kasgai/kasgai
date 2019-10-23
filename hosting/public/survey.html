@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>Kasgai</title>
+    <title>Kasgai - Survey</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f7f7f7">
@@ -24,8 +24,7 @@
           <div class="navbar-nav mr-auto">
             <span class="navbar-text" id="greeting" href="#"></span>
           </div>
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" href="survey.html">アンケート</a>       
+          <div class="navbar-nav">       
             <a class="nav-item nav-link" href="logout.html">ログアウト</a>
           </div>
         </div>
@@ -34,9 +33,8 @@
    
     <div class="container mt-5">
         <h3>
-            Projects
-            <small class="text-muted ml-3">参加中のプロジェクト</small>
-            <a role="button" class="btn btn-outline-success float-right" href="newproject.html">新規プロジェクト</a>
+            Surveys
+            <small class="text-muted ml-3">実施中のアンケート</small>
         </h3>
 
         <div class="d-flex justify-content-center" id="loading">
@@ -47,48 +45,12 @@
 
         <div class="card text-center collapse mt-5" id="noprojectCard">
           <div class="card-body">
-                <h5 class="card-title">プロジェクトがありません</h5>
-              <p class="card-text">表示するデータが見つかりませんでした　新しくプロジェクトを作りましょう</p>
+                <h5 class="card-title">アンケートがありません</h5>
+              <p class="card-text">現在実施中ではありません</p>
             </blockquote>
           </div>
         </div>
-
-        <div class="row mt-5" id="cardContainer">
-
-            
-            
-        </div>
     </div>
-
-    <!-- Modal -->
-<div class="modal fade" id="settingModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <h5>詳細</h5>
-            <p id="modalDescription"></p>
-            <hr>
-            <h5>共有中のアカウント</h5>
-            <p id="modalDescription">共有機能は準備中です。しばらくお待ちください。</p>
-            <hr>
-            <h5>削除</h5>
-            <p>削除を押すと二度と復元できないので注意してください。</p>
-            <button type="button" class="btn btn-danger" id="modalDeleteButton">削除</button>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Modal-->
 
     <nav class="navbar sticky-bottom navbar-dark bg-dark">
         <div class="container">
@@ -117,7 +79,7 @@
       firebase.initializeApp(config);
     </script>
 
-    <script src="index.js"></script>
+    <script src="survey.js"></script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
