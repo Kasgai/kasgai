@@ -6,7 +6,7 @@ The survery system with CSV import.
 ### Definition
 Write a element in one line. Parameters are split by ",". Param0 is a tag and it use following parameters.
 ```
-<Tag>,<Param1>,<Param2>,...,<ParamN>
+<Tag>,<Id>,<Param1>,<Param2>,...,<ParamN>
 ```
 
 ### Introduction of Tags
@@ -15,69 +15,69 @@ Write a element in one line. Parameters are split by ",". Param0 is a tag and it
 A "section" tag shows large title.
 > Definition
 ```
-section,<Title:Text>
+section,<Id>,<Title:Text>
 ```
 > Example
 ```
-section,Please answer following questions.
+section,section1,Please answer following questions.
 ```
 
 #### text
 A "text" tag shows a one-line text field.
 > Definition
 ```
-text,<Question:Text>,<isRequired:Number>
+text,<Id>,<Question:Text>,<isRequired:Number>
 ```
 > Example
 ```
-text,What's your name?,1
+text,name,What's your name?,1
 ```
 
 #### longtext
 A "longtext" tag shows a textarea.
 > Definition
 ```
-longtext,<Question:Text>,<isRequired:Number>
+longtext,<Id>,<Question:Text>,<isRequired:Number>
 ```
 > Example
 ```
-longtext,Write down your idea of future.,1
+longtext,idea,Write down your idea of future.,1
 ```
 
 #### check
 A "check" tag shows selection using checkboxes. It mainly used for multiple selection questions. You can show text field for "other", adding id= element at the end of the line. 
 > Definition
 ```
-check,<Question:Text>,<isRequired:Number>,<choice0>,<choice1>,...,<choiceN>
-check,<Question:Text>,<isRequired:Number>,<choice0>,<choice1>,...,<other>
+check,<Id>,<Question:Text>,<isRequired:Number>,<choice0>,<choice1>,...,<choiceN>
+check,<Id>,<Question:Text>,<isRequired:Number>,<choice0>,<choice1>,...,<other>
 ```
 > Example
 ```
-check,Which are your favarite foods?,0,Takoyaki,Humburgers,Cakes,Noodles
+check,foods1,Which are your favarite foods?,0,Takoyaki,Humburgers,Cakes,Noodles
 ```
 > Example
 ```
-check,Which are your favarite foods?,0,Takoyaki,Humburgers,Cakes,Noodles,id=otherFood
+check,foods2,Which are your favarite foods?,0,Takoyaki,Humburgers,Cakes,Noodles,id=otherFood
 ```
 
 #### radio
 A "radio" tag shows selection using radio button. It mainly used for single selection questions. You can show text field for "other", adding id= element at the end of the line. 
 > Definition
 ```
-radio,<Question:Text>,<isRequired:Number>,<choice0>,<choice1>,...,<choiceN>
-radio,<Question:Text>,<isRequired:Number>,<choice0>,<choice1>,...,<other>
+radio,<Id>,<Question:Text>,<isRequired:Number>,<choice0>,<choice1>,...,<choiceN>
+radio,<Id>,<Question:Text>,<isRequired:Number>,<choice0>,<choice1>,...,<other>
 ```
 > Example
 ```
-radio,Select your gender.,1,male,female
+radio,selectGender1,Select your gender.,1,male,female
 ```
 > Example
 ```
-radio,Select your gender.,1,male,female,id=otherGender
+radio,selectGender2,Select your gender.,1,male,female,id=otherGender
 ```
 > Example
 ```
-radio,Select your grade.,1,2,3,4,5,6,7
+radio,selectGrade,Select your grade.,1,2,3,4,5,6,7
 ```
 
 ### Reserved Words
