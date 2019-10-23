@@ -88,3 +88,6 @@ Following words are reserved words so you can't use these word as text. If you w
 ### Boolean Definition
 - True : 1
 - False : 0
+
+### Other Rules
+- Don't use same question title more than once because system use question title as id.
