@@ -37,7 +37,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 function makeCard(key) {
   firebase.database().ref("surveys/"+key).once("value",function(snapshot) {
-    $("#surveylist").append('<a href="'+"surveyform.html?id="+key+'"><li class="list-group-item">'+snapshot.val().title+'</li></a>')
+    $("#surveylist").append($('<a href="'+"surveyform.html?id="+key+'"></a>').append($('<li class="list-group-item"></li>').text(snapshot.val().title)));
   });
   
 }

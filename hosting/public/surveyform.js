@@ -38,7 +38,7 @@ function load() {
 	if (getParam("id", window.location)) {
 		firebase.database().ref("surveys/" + getParam("id", window.location)).once("value").then(function (snapshot) {
 			$("#titleLabel").text(snapshot.val().title);
-			csv2question(snapshot.val().csv);
+			csv2question(escapeHtml(snapshot.val().csv));
 		});
 	}
 	else {
@@ -80,6 +80,22 @@ function save(e) {
 	e.stopPropagation();
 	console.log($("#questionsform"))
 }
+
+function escapeHtml (string) {
+	if(typeof string !== 'string') {
+	  return string;
+	}
+	return string.replace(/[&'`"<>]/g, function(match) {
+	  return {
+		'&': '&amp;',
+		"'": '&#x27;',
+		'`': '&#x60;',
+		'"': '&quot;',
+		'<': '&lt;',
+		'>': '&gt;',
+	  }[match]
+	});
+  }
 
 class Section {
 
