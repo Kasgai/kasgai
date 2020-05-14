@@ -72,8 +72,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                   "<li class='list-group-item'><a href="+ "kegaki/index.html?id=" + id +" class='card-link'>Open in Kegaki</a></li>"+
                   "<li class='list-group-item'><a href="+ "yattoko/index.html?id=" + id +" class='card-link'>Open in Yattoko</a></li>"+
                   "<li class='list-group-item'><a href="+ "kanna/?id=" + id +" class='card-link'>Open in Kanna</a></li>"+
-                  "<li class='list-group-item'><a href="+ "shikkui/?id=" + id +" class='card-link'>Open in Shikkui</a></li>"+
-                  "<li class='list-group-item'><a href="+ "shikkui/hyogo-u.html?id=" + id +" class='card-link'>Open in Shikkui (e-tech)</a></li>"+
+                  "<li class='list-group-item'><a href="+ "https://shikkui.kasgai.com/?id=" + id +" class='card-link'>Open in Shikkui</a></li>"+
                 "</ul></div></div>");
 
         $("#"+id+"SettingButton").on( "click", function(event){
