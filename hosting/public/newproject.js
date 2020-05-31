@@ -35,8 +35,8 @@ $("#createButton").on( "click", function(){
     ref.set({
         title: $("#inputTitle").val(),
         description: $("#inputDescription").val(),
-        template: $("#inputTemplate").val()
-
+        template: $("#inputTemplate").val(),
+        shikkui: {template : $("#shikkuiTemplate").val()}
       }).then(function() {
         console.log("Document successfully written!");
     }).catch(function(error) {
