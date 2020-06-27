@@ -5,7 +5,7 @@
 
 ## About
 
-Kasgai is the educational application for biginner of programming.
+Kasgai is the educational application for beginner of programming.
 
 ## Getting Started
 
